@@ -8,7 +8,7 @@ bot = telebot.TeleBot(config.API_TOKEN)
 
 @bot.message_handler(commands=['start'])
 def welcome(message):
-    bot.send_message(message.chat.id, 'Hello, {0.first_name}! My name is {1.first_name}. I was by made by MHamidov for getting coronavirus statistics by countries. All you need to do is just to send me country name you want to get statistics. If you want to get worldwide statistics just send `all`'.format(message.from_user, bot.get_me()))
+    bot.send_message(message.chat.id, 'Hello, {0.first_name}! My name is {1.first_name}. I was made by MHamidov for getting coronavirus statistics by countries. All you need to do is just to send me country name you want to get statistics. If you want to get worldwide statistics just send `all`'.format(message.from_user, bot.get_me()))
 
 @bot.message_handler(content_types=['text'])
 def send_statistics(message):
