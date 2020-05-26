@@ -7,11 +7,11 @@ import config
 bot = telebot.TeleBot(config.API_TOKEN)
 
 @bot.message_handler(commands=['start'])
-def start_message(message):
-    bot.send_message(message.chat.id, 'I was by made by MHamidov for getting coronavirus statistics by countries. All you need to do is just to send me country name you want to get statistics. If you want to get worldwide statistics just send `all`')
+def welcome(message):
+    bot.send_message(message.chat.id, 'Hello, {0.first_name}! My name is CoronaBot. I was by made by MHamidov for getting coronavirus statistics by countries. All you need to do is just to send me country name you want to get statistics. If you want to get worldwide statistics just send `all`'.format(message.from_user))
 
 @bot.message_handler(content_types=['text'])
-def send_text_message(message):
+def send_statistics(message):
     if message.text.upper() == 'ALL':
         response = requests.get('https://corona.lmao.ninja/v2/all')
     else:
